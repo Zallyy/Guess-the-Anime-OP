@@ -17,8 +17,8 @@
                   Your browser does not support the video tag.
                 </video>
                 <div v-show="playerIsGuessing" class="cover flex-center">
-                    <p v-show="songPlaying"><strong>{{guessingTimeLeft}}</strong></p>
-                    <div v-show="!songPlaying" class="loader">
+                    <p v-show="finishedLoading"><strong>{{guessingTimeLeft}}</strong></p>
+                    <div v-show="!finishedLoading" class="loader">
                         <span></span>
                         <span></span>
                         <span></span>
@@ -35,7 +35,7 @@
                 </div>
             </form>
 
-            <button v-if='gameFinished' @click="location.reload()" >Play Again</button>
+            <button v-if='gameFinished' @click="refreshPage" >Play Again</button>
 
         </div>
     </section>
@@ -50,10 +50,11 @@ export default {
             animeList: [],
             songQueue: [],
             currentSong: {},
-            songs: 1,
+            songs: 10,
             currentSongNum: 0,
             songsCorrect: 0,
             songPlaying: false,
+            finishedLoading: false,
             songFinished: false,
             guessingTime: 20,
             songDuration: 0,
@@ -87,22 +88,22 @@ export default {
     },
     watch: {
         songLoop(value) {
-            this.correctAnswer = false
-            if (value == 1) {
-                this.userInput = ''
-            }
-            if (value >= 3) {
-                if (this.gameFinished) {
-                    return
+            if (!this.gameFinished) {
+                this.correctAnswer = false
+                if (value == 1) {
+                    this.userInput = ''
                 }
-                this.songLoop = 1
-                this.songPlaying = false
-                this.chooseSong()
-            }
-            if (value == 2) {
-                this.checkCorrectAnswer()
-                this.playOpening()
-                this.playerIsGuessing = false
+                if (value >= 3) {
+                    this.finishedLoading = false
+                    this.songLoop = 1
+                    this.songPlaying = false
+                    this.chooseSong()
+                }
+                if (value == 2) {
+                    this.checkCorrectAnswer()
+                    this.playOpening()
+                    this.playerIsGuessing = false
+                }
             }
         },
         currentSong() {
@@ -113,9 +114,12 @@ export default {
                 if (this.songs < value) {
                 this.gameFinished = true
             }
-        } 
+        },
     },
     methods: {
+        refreshPage() {
+            location.reload()
+        },
         filterResults(anime) {
             if (anime.toLowerCase().includes(this.userInput.toLowerCase())) {
                 return true
@@ -152,6 +156,7 @@ export default {
             } while (!this.songQueue.includes(index))
         },
         playOpening() {
+            this.finishedLoading = true
             this.guessingTimeLeft = this.guessingTime
             const video = document.querySelector('video') 
             video.currentTime = this.songRandomStartTime

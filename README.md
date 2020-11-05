@@ -1,4 +1,4 @@
-# guessop
+# Guess that Anime OP
 
 ## Project setup
 ```

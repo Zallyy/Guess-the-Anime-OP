@@ -1,7 +1,7 @@
 <template>
 <div class="body">
     <start-page v-if="!play" @toggle-play="togglePlay"></start-page>
-    <opening-component v-if="play"></opening-component>
+    <opening-component v-if="play" @game-finished="togglePlay"></opening-component>
 </div>
 </template>
 

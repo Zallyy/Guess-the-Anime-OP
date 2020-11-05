@@ -1,5 +1,5 @@
 <template>
-  <section class="game flex-center">
+  <section v-if="!gameFinished" class="game flex-center">
         <div v-show="songLoop == 2" class="info p-1 m-4">
             <p>Song: {{currentSong.song}}</p>
             <p>Artist: {{currentSong.artist}}</p>
@@ -7,11 +7,11 @@
         </div>
         <div class="middle">
             <div class="stats">
-                <p>{{currentSongNum}}/10</p>
+                <p>{{currentSongNum}}/{{songs}}</p>
                 <p v-show="songLoop == 2">{{currentSong.animeName}}</p>
                 <p>{{songsCorrect}}</p>
             </div>
-            <div class="video-container my-1">
+            <div :class="{correctAnswer}" class="video-container my-1">
                 <video @loadeddata="newDataLoaded" :style="songPlaying ? 'background: none' : 'background: white'">
                 <source v-if='songPlaying' :src="currentSong.link">
                   Your browser does not support the video tag.
@@ -22,7 +22,12 @@
             </div>
             
             <form class="my-1" action="" @submit.prevent>
-                <input type="text" class="guess-opening" placeholder="anime name" autofocus>
+                <input v-model='userInput' :class="{correctAnswer}" @focus="showList=true" @blur="showListFalse" type="text" class="guess-opening" placeholder="anime name" autofocus>
+                <div v-if='showList'>
+                    <div v-for="anime in animeList" :key="anime"> 
+                        <p v-show="filterResults(anime)" @click='userInput = anime'>{{anime}}</p>
+                    </div>
+                </div>
             </form>
         </div>
     </section>
@@ -43,19 +48,21 @@ export default {
             songPlaying: false,
             songFinished: false,
             guessingTime: 20,
-            intermissionTime: 20,
             songDuration: 0,
             songRandomStartTime: 0,
             songRandomEndTime: 0,
             songLoop: 1,
             playerIsGuessing: true,
             guessingTimeLeft: 20,
-            userInput: ''
+            userInput: '',
+            correctAnswer: false,
+            showList: false,
+            gameFinished: false,
         }
     },
     mounted() {
         const fetchOpenings = async () => {
-            const res = await fetch ('https://api.jsonbin.io/b/5fa3626047077d298f5d2872/6')
+            const res = await fetch ('https://api.jsonbin.io/b/5fa3626047077d298f5d2872/7')
             this.songList = await res.json() 
             createAnimeList()
             this.chooseSong()
@@ -67,18 +74,22 @@ export default {
                 }
             })
             this.animeList.sort()
-            console.log('Anime List', this.animeList)
         }
         fetchOpenings()
     },
     watch: {
         songLoop(value) {
+            this.correctAnswer = false
+            if (value == 1) {
+                this.userInput = ''
+            }
             if (value >= 3) {
                 this.songLoop = 1
                 this.songPlaying = false
                 this.chooseSong()
             }
             if (value == 2) {
+                this.checkCorrectAnswer()
                 this.playOpening()
                 this.playerIsGuessing = false
             }
@@ -86,9 +97,37 @@ export default {
         currentSong() {
             const video = document.querySelector('video') 
             video.load()
-        }
+        },
+        gameFinished(value) {
+            if (value == true) {
+                location.reload();
+            }
+        },
+        currentSongNum(value) {
+                if (this.songs < value) {
+                this.gameFinished = true
+            }
+        } 
     },
     methods: {
+        filterResults(anime) {
+            if (anime.toLowerCase().includes(this.userInput.toLowerCase())) {
+                return true
+            } else {
+                return false
+            }
+        },
+        checkCorrectAnswer() {
+            if (this.currentSong.animeName.toLowerCase() == this.userInput.toLowerCase()) {
+                this.correctAnswer = true
+                this.songsCorrect++
+            }
+        },
+        showListFalse() {
+            setTimeout(() => {
+                this.showList = false
+            },100)
+        },
         randomInt(min, max) { 
             return Math.floor(Math.random() * (max - min + 1) + min);
         },

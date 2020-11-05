@@ -1,5 +1,5 @@
 <template>
-  <section v-if="!gameFinished" class="game flex-center">
+  <section class="game flex-center">
         <div v-show="songLoop == 2" class="info p-1 m-4">
             <p>Song: {{currentSong.song}}</p>
             <p>Artist: {{currentSong.artist}}</p>
@@ -17,7 +17,12 @@
                   Your browser does not support the video tag.
                 </video>
                 <div v-show="playerIsGuessing" class="cover flex-center">
-                    <p><strong>{{guessingTimeLeft}}</strong></p>
+                    <p v-show="songPlaying"><strong>{{guessingTimeLeft}}</strong></p>
+                    <div v-show="!songPlaying" class="loader">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                 </div>
             </div>
             
@@ -29,6 +34,9 @@
                     </div>
                 </div>
             </form>
+
+            <button v-if='gameFinished' @click="location.reload()" >Play Again</button>
+
         </div>
     </section>
 </template>
@@ -42,7 +50,7 @@ export default {
             animeList: [],
             songQueue: [],
             currentSong: {},
-            songs: 10,
+            songs: 1,
             currentSongNum: 0,
             songsCorrect: 0,
             songPlaying: false,
@@ -84,6 +92,9 @@ export default {
                 this.userInput = ''
             }
             if (value >= 3) {
+                if (this.gameFinished) {
+                    return
+                }
                 this.songLoop = 1
                 this.songPlaying = false
                 this.chooseSong()
@@ -97,11 +108,6 @@ export default {
         currentSong() {
             const video = document.querySelector('video') 
             video.load()
-        },
-        gameFinished(value) {
-            if (value == true) {
-                location.reload();
-            }
         },
         currentSongNum(value) {
                 if (this.songs < value) {
@@ -171,5 +177,5 @@ export default {
             this.songRandomEndTime = this.songRandomStartTime + this.guessingTime
         }
     }
-}
+}       
 </script>

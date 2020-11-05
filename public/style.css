@@ -1,216 +1,235 @@
 .divider {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-item-align: center;
-        align-self: center;
-  }
-  
-  .divider div {
-    background: white;
-  }
-  
-  .divider .left, .divider .right {
-    margin: 0 5px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-  }
-  
-  .divider .mid {
-    height: 8px;
-    width: 25px;
-    border-radius: 50% 5px 5px 50%;
-  }
-  
-  button {
-    padding: 12px 30px;
-    background: white;
-    color: #2D3E50;
-    outline: none;
-    border: none;
-    font-size: 1.2em;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background: #2D3E50;
-    color: white;
-    outline: 2px white solid;
-  }
-  
-  .inactive {
-    display: none !important;
-  }
-  
-  .flex-center {
-    width: 100%;
-    height: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-  }
-  
-  video {
-    background: white;
-    /* box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.1); */
-    width: 100%;
-    height: 325px;
-  }
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-item-align: center;
+      align-self: center;
+}
 
+.divider div {
+  background: white;
+}
 
-  
-  /* Margin */
-  .my-1 {
-    margin: 1rem 0;
-  }
-  
-  .my-2 {
-    margin: 1.5rem 0;
-  }
-  
-  .my-3 {
-    margin: 2rem 0;
-  }
-  
-  .my-4 {
-    margin: 3rem 0;
-  }
-  
-  .my-5 {
-    margin: 4rem 0;
-  }
-  
-  .m-1 {
-    margin: 1rem;
-  }
-  
-  .m-2 {
-    margin: 1.5rem;
-  }
-  
-  .m-3 {
-    margin: 2rem;
-  }
-  
-  .m-4 {
-    margin: 3rem;
-  }
-  
-  .m-5 {
-    margin: 4rem;
-  }
-  
-  /* Padding */
-  .py-1 {
-    padding: 1rem 0;
-  }
-  
-  .py-2 {
-    padding: 1.5rem 0;
-  }
-  
-  .py-3 {
-    padding: 2rem 0;
-  }
-  
-  .py-4 {
-    padding: 3rem 0;
-  }
-  
-  .py-5 {
-    padding: 4rem 0;
-  }
-  
-  .p-1 {
-    padding: 1rem;
-  }
-  
-  .p-2 {
-    padding: 1.5rem;
-  }
-  
-  .p-3 {
-    padding: 2rem;
-  }
-  
-  .p-4 {
-    padding: 3rem;
-  }
-  
-  .p-5 {
-    padding: 4rem;
-  }
-  
-  * {
-    -webkit-box-sizing: border-box;
-            box-sizing: border-box;
-    margin: 0;
-  }
-  
-  .body {
-    width: 100vw;
-    height: 100vh;
-    background-color: #2D3E50;
-    color: white;
-  }
-  
-  .start-screen {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
-  
-  .start-screen h1 {
-    font-size: 3em;
-  }
-  
-  .game {
-    position: relative;
-    flex-direction: column;
-  }
+.divider .left, .divider .right {
+  margin: 0 5px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
 
-  .game .info {
-    position: absolute;
-    top: 0;
-    background: white;
-    width: 300px;
-    color: #2D3E50;
-  }
-  
-  .game .info p {
-    margin: 20px 0px;
-  }
-  
-  .game .middle {
-    width: 550px;
-  }
-  
-  .game .middle .stats {
-    width: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
-  }
-  
-  .game .middle form input {
-    width: 100%;
-    padding: 5px;
-    text-align: center;
-    color: #2D3E50;
-  }
-  
-  .game .middle form input:focus {
-    outline: none;
-  }
-  /*# sourceMappingURL=style.css.map */
+.divider .mid {
+  height: 8px;
+  width: 25px;
+  border-radius: 50% 5px 5px 50%;
+}
+
+button {
+  padding: 12px 30px;
+  background: white;
+  color: #2D3E50;
+  outline: none;
+  border: none;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #2D3E50;
+  color: white;
+  outline: 2px white solid;
+}
+
+.inactive {
+  display: none !important;
+}
+
+.flex-center {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.video-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+}
+
+.video-container video {
+  position: relative;
+  background: white;
+  width: 100%;
+  height: auto;
+}
+
+.video-container .cover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: gray;
+}
+
+.video-container .cover p {
+  font-size: 74px;
+}
+
+/* Margin */
+.my-1 {
+  margin: 1rem 0;
+}
+
+.my-2 {
+  margin: 1.5rem 0;
+}
+
+.my-3 {
+  margin: 2rem 0;
+}
+
+.my-4 {
+  margin: 3rem 0;
+}
+
+.my-5 {
+  margin: 4rem 0;
+}
+
+.m-1 {
+  margin: 1rem;
+}
+
+.m-2 {
+  margin: 1.5rem;
+}
+
+.m-3 {
+  margin: 2rem;
+}
+
+.m-4 {
+  margin: 3rem;
+}
+
+.m-5 {
+  margin: 4rem;
+}
+
+/* Padding */
+.py-1 {
+  padding: 1rem 0;
+}
+
+.py-2 {
+  padding: 1.5rem 0;
+}
+
+.py-3 {
+  padding: 2rem 0;
+}
+
+.py-4 {
+  padding: 3rem 0;
+}
+
+.py-5 {
+  padding: 4rem 0;
+}
+
+.p-1 {
+  padding: 1rem;
+}
+
+.p-2 {
+  padding: 1.5rem;
+}
+
+.p-3 {
+  padding: 2rem;
+}
+
+.p-4 {
+  padding: 3rem;
+}
+
+.p-5 {
+  padding: 4rem;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+}
+
+.body {
+  width: 100vw;
+  height: 100vh;
+  background-color: #2D3E50;
+  color: white;
+}
+
+.start-screen {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.start-screen h1 {
+  font-size: 3em;
+}
+
+.game {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.game .info {
+  position: absolute;
+  top: 0;
+  background: white;
+  width: 300px;
+  color: #2D3E50;
+}
+
+.game .info p {
+  margin: 20px 0px;
+}
+
+.game .middle {
+  width: 600px;
+}
+
+.game .middle .stats {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.game .middle form input {
+  width: 100%;
+  font-size: 1em;
+  padding: 6px;
+  text-align: center;
+  color: #2D3E50;
+}
+
+.game .middle form input:focus {
+  outline: none;
+}
+/*# sourceMappingURL=style.css.map */

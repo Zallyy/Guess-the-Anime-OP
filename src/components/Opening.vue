@@ -3,7 +3,7 @@
         <div v-show="songLoop == 2" class="info p-1 m-4">
             <p>Song: {{currentSong.song}}</p>
             <p>Artist: {{currentSong.artist}}</p>
-            <p>Opening:{{currentSong.opening}} </p>
+            <p>Opening: {{currentSong.opening}} </p>
         </div>
         <div class="middle">
             <div class="stats">
@@ -11,10 +11,16 @@
                 <p v-show="songLoop == 2">{{currentSong.animeName}}</p>
                 <p>{{songsCorrect}}</p>
             </div>
-            <video @loadeddata="newDataLoaded" :style="songPlaying ? 'background: none' : 'background: white'" class="my-1">
+            <div class="video-container my-1">
+                <video @loadeddata="newDataLoaded" :style="songPlaying ? 'background: none' : 'background: white'">
                 <source v-if='songPlaying' :src="currentSong.link">
                   Your browser does not support the video tag.
-            </video>
+                </video>
+                <div v-show="playerIsGuessing" class="cover flex-center">
+                    <p><strong>{{guessingTimeLeft}}</strong></p>
+                </div>
+            </div>
+            
             <form class="my-1" action="" @submit.prevent>
                 <input type="text" class="guess-opening" placeholder="anime name" autofocus>
             </form>
@@ -43,6 +49,7 @@ export default {
             songRandomEndTime: 0,
             songLoop: 1,
             playerIsGuessing: true,
+            guessingTimeLeft: 20,
             userInput: ''
         }
     },
@@ -52,7 +59,6 @@ export default {
             this.songList = await res.json() 
             createAnimeList()
             this.chooseSong()
-            
         }
         const createAnimeList = () => {
             this.songList.forEach(song => {
@@ -74,6 +80,7 @@ export default {
             }
             if (value == 2) {
                 this.playOpening()
+                this.playerIsGuessing = false
             }
         },
         currentSong() {
@@ -86,11 +93,12 @@ export default {
             return Math.floor(Math.random() * (max - min + 1) + min);
         },
         chooseSong() {
-            // this.currentSong = this.songList[this.songList.length-1]; // Most recently added song. Testing
+            // Testing
+            // this.currentSong = this.songList[this.songList.length-1]; // Most recently added song. 
             this.songPlaying = true
             this.currentSongNum++
 
-            //Production
+            //Comment out when testing new songs added
             let index = 0
             do {
                 index = this.randomInt(0, this.songList.length-1)
@@ -99,6 +107,7 @@ export default {
             } while (!this.songQueue.includes(index))
         },
         playOpening() {
+            this.guessingTimeLeft = this.guessingTime
             const video = document.querySelector('video') 
             video.currentTime = this.songRandomStartTime
             video.play()
@@ -109,6 +118,7 @@ export default {
                     this.playerIsGuessing = !this.playerIsGuessing 
                     this.songLoop++
                 }
+                this.guessingTimeLeft = this.songRandomEndTime - Math.floor(video.currentTime)
             }, 1000)
         },
         newDataLoaded() {
@@ -117,12 +127,9 @@ export default {
         },
         getSongStats() {
             const video = document.querySelector('Video')
-
             this.songDuration = video.duration
             this.songRandomStartTime = this.randomInt(0, this.songDuration-22)
             this.songRandomEndTime = this.songRandomStartTime + this.guessingTime
-            console.log(`Start: ${this.songRandomStartTime}`)
-            console.log(`End: ${this.songRandomEndTime}`)
         }
     }
 }

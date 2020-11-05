@@ -226,12 +226,12 @@ button:hover {
           justify-content: space-between;
 }
 
-.game .middle form {
+.game .middle .filterInput {
   height: 200px;
   overflow-y: auto;
 }
 
-.game .middle form option {
+.game .middle .filterInput p {
   background: white;
   color: #2D3E50;
   padding: 5px;
@@ -239,12 +239,12 @@ button:hover {
   text-align: center;
 }
 
-.game .middle form option:hover {
+.game .middle .filterInput p:hover {
   opacity: 90%;
   cursor: pointer;
 }
 
-.game .middle form input {
+.game .middle .filterInput input {
   width: 100%;
   font-size: 1em;
   padding: 6px;
@@ -254,7 +254,7 @@ button:hover {
   color: #2D3E50;
 }
 
-.game .middle form input:focus, .game .middle form input:active {
+.game .middle .filterInput input:focus, .game .middle .filterInput input:active {
   outline: none;
 }
 
@@ -323,7 +323,7 @@ button:hover {
   }
 }
 
-form {
+.contact-form {
   margin: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -334,23 +334,23 @@ form {
           flex-direction: column;
 }
 
-form h3 {
+.contact-form h3 {
   text-align: center;
 }
 
-form div {
+.contact-form div {
   text-align: center;
   margin: 5px 0;
 }
 
-form input {
+.contact-form input {
   width: 100%;
   padding: 5px;
   outline: none;
   border: none;
 }
 
-form input.btn {
+.contact-form input.btn {
   cursor: pointer;
 }
 /*# sourceMappingURL=style.css.map */

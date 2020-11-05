@@ -2,7 +2,7 @@
  <section class="start-screen flex-center">
         <h1 class="my-1">Anime Opening Quiz</h1>
         <button @click="this.$emit('toggle-play')" class="my-2">Play</button>
-        <form name="contact" method="POST" data-netlify="true" data-netlify-recaptcha="true">
+        <form class='contact-form' name="contact" method="POST" data-netlify="true" data-netlify-recaptcha="true">
             <input v-show='!hidden' type="hidden" name="form-name" value="contact">
             <h3>Want to request an opening?</h3>
             <div class="form-control">

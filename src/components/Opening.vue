@@ -26,7 +26,7 @@
                 </div>
             </div>
             
-            <form class="my-1" action="" @submit.prevent>
+            <form class="my-1 filterInput" action="" @submit.prevent>
                 <input v-model='userInput' :class="{correctAnswer}" @focus="showList=true" @blur="showListFalse" type="text" class="guess-opening" placeholder="anime name" autofocus>
                 <div v-if='showList'>
                     <div v-for="anime in animeList" :key="anime"> 

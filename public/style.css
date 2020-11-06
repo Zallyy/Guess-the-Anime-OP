@@ -215,6 +215,7 @@ body {
 }
 
 .game .middle {
+  margin-top: 50px;
   width: 500px;
 }
 

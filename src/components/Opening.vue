@@ -1,6 +1,6 @@
 <template>
   <section class="game flex-center">
-        <div v-show="songLoop == 2" class="info p-1 m-4">
+        <div v-show="songLoop == 2" class="info p-1 m-2">
             <p>Song: {{currentSong.song}}</p>
             <p>Artist: {{currentSong.artist}}</p>
             <p>Opening: {{currentSong.opening}} </p>

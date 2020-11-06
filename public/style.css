@@ -205,8 +205,6 @@ body {
 }
 
 .game .info {
-  position: absolute;
-  top: 0;
   background: white;
   width: 300px;
   color: #2D3E50;
@@ -218,7 +216,6 @@ body {
 
 .game .middle {
   width: 500px;
-  margin-top: 150px;
 }
 
 .game .middle .stats {

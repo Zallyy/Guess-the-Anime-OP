@@ -174,8 +174,12 @@ button:hover {
   margin: 0;
 }
 
-.body {
+body {
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   width: 100vw;
   height: 100vh;
   background-color: #2D3E50;
@@ -325,6 +329,7 @@ button:hover {
 }
 
 .contact-form {
+  width: 300px;
   margin: 20px;
   display: -webkit-box;
   display: -ms-flexbox;

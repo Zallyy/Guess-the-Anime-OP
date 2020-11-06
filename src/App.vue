@@ -13,6 +13,15 @@ export default {
       play: false
     } 
   },
+  watch: {
+    play(value) {
+      if (value == false) {
+        document.querySelector('.contact-form').classList.add('inactive')
+      } else {
+        document.querySelector('.contact-form').classList.remove('inactive')
+      }
+    }
+  },
   methods: {
     togglePlay() {
       this.play = !this.play

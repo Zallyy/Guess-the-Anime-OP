@@ -12,5 +12,24 @@
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
+    <form class='contact-form inactive' name="contact" method="POST" netlify netlify-honeypot="bot-field">
+      <h3>Want to request an opening?</h3>
+      <div class="form-control">
+          <input type="text" name="anime" placeholder="anime name" required>
+      </div>
+      <div class="form-control">
+          <input type="text" name="song" placeholder="song" required>
+      </div>
+      <div class="form-control">
+          <input type="text" name="artist" placeholder="artist" required>
+      </div>
+      <div class="form-control">
+          <input type="text" name="opening" placeholder="opening number" required>
+      </div>
+      <div class="form-control">
+          <input type="text" name="artist" placeholder="link to mp4 file (use catbox.moe if possible)" required>
+      </div>
+      <input type="submit" value="Send" class="btn">
+  </form>
   </body>
 </html>

@@ -175,6 +175,7 @@ button:hover {
 }
 
 .body {
+  overflow: hidden;
   width: 100vw;
   height: 100vh;
   background-color: #2D3E50;
@@ -212,8 +213,8 @@ button:hover {
 }
 
 .game .middle {
-  width: 600px;
-  margin-top: 200px;
+  width: 500px;
+  margin-top: 150px;
 }
 
 .game .middle .stats {

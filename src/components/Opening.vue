@@ -50,7 +50,7 @@ export default {
             animeList: [],
             songQueue: [],
             currentSong: {},
-            songs: 10,
+            songs: 1,
             currentSongNum: 0,
             songsCorrect: 0,
             songPlaying: false,
@@ -103,18 +103,16 @@ export default {
                     this.checkCorrectAnswer()
                     this.playOpening()
                     this.playerIsGuessing = false
+                    if (this.songs <= this.currentSongNum) {
+                        this.gameFinished = true
+                    }
                 }
             }
         },
         currentSong() {
             const video = document.querySelector('video') 
             video.load()
-        },
-        currentSongNum(value) {
-                if (this.songs <= value && this.songLoop >= 2) {
-                this.gameFinished = true
-            }
-        },
+        }
     },
     methods: {
         refreshPage() {

@@ -71,7 +71,7 @@ export default {
     },
     mounted() {
         const fetchOpenings = async () => {
-            const res = await fetch ('https://api.jsonbin.io/b/5fa3626047077d298f5d2872/7')
+            const res = await fetch ('https://api.jsonbin.io/b/5fa3626047077d298f5d2872/9')
             this.songList = await res.json() 
             createAnimeList()
             this.chooseSong()

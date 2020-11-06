@@ -111,7 +111,7 @@ export default {
             video.load()
         },
         currentSongNum(value) {
-                if (this.songs < value) {
+                if (this.songs <= value && this.songLoop >= 2) {
                 this.gameFinished = true
             }
         },

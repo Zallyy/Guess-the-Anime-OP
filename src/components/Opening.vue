@@ -136,7 +136,7 @@ export default {
         showListFalse() {
             setTimeout(() => {
                 this.showList = false
-            },100)
+            },500)
         },
         randomInt(min, max) { 
             return Math.floor(Math.random() * (max - min + 1) + min);

@@ -1,5 +1,5 @@
 # Guess that Anime OP
-
+<img src='https://share.wildbook.me/cFKddRWAoPzLZUQM.png'>
 ## Project setup
 ```
 npm install

@@ -50,7 +50,7 @@ export default {
             animeList: [],
             songQueue: [],
             currentSong: {},
-            songs: 1,
+            songs: 10,
             currentSongNum: 0,
             songsCorrect: 0,
             songPlaying: false,
